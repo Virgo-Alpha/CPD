@@ -11,6 +11,7 @@ ec2_instance_params = {
     'ImageId': 'ami-0005e0cfe09cc9050',  # Specify the desired Amazon Machine Image (AMI) ID
     'InstanceType': 't2.micro',  # Specify the instance type (e.g., t2.micro)
     'KeyName': 'vockey',  # Specify the key pair name for SSH access
+    'security_group': 'sg-007eabf003fb80edd',  # Specify the security group ID
     'MinCount': 1,  # Minimum number of instances to launch
     'MaxCount': 1,  # Maximum number of instances to launch
     'TagSpecifications': [

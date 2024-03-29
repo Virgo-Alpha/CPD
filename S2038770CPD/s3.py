@@ -73,4 +73,3 @@ try:
 
 except botocore.exceptions.ClientError as e:
     print(f'Error creating S3 bucket: {e.response["Error"]["Message"]}')
-
