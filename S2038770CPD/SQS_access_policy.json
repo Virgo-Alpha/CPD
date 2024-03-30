@@ -1,0 +1,26 @@
+{
+    "Version": "2012-10-17",
+    "Id": "789325082",
+    "Statement": [
+      {
+        "Sid": "78623149",
+        "Effect": "Allow",
+        "Principal": {
+          "Service": "s3.amazonaws.com"
+        },
+        "Action": [
+          "SQS:SendMessage",
+          "SQS:ReceiveMessage"
+        ],
+        "Resource": "arn:aws:sqs:us-east-1:519012545046:MyQueueS2038770",
+        "Condition": {
+          "StringEquals": {
+            "aws:SourceAccount": "519012545046"
+          },
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:s3:::mybucket-s2038770"
+          }
+        }
+      }
+    ]
+  }

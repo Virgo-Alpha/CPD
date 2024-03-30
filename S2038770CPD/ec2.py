@@ -24,7 +24,7 @@ def create_ec2_instance(instance_params):
 def main_ec2():
     # Define the parameters for creating the EC2 instance
     ec2_instance_params = {
-        'ImageId': 'ami-0005e0cfe09cc9050',
+        'ImageId': 'ami-0005e0cfe09cc9050', # Unique to me
         'InstanceType': 't2.micro',
         'KeyName': 'vockey',
         'SecurityGroupIds': ['sg-007eabf003fb80edd'],
