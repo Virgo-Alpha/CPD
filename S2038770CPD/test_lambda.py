@@ -1,10 +1,6 @@
 import boto3
 import json
 
-# // TODO: Find out what the SQS contains 
-# // TODO: extract entities in the Lambda function
-# TODO: Store the entities in a DynamoDB test_table and run them through AWS Rekognition
-
 # Initialize the DynamoDB client
 dynamodb = boto3.client('dynamodb')
 # Initialize the Rekognition client
@@ -56,36 +52,37 @@ def lambda_handler(event, context):
             sourceIP = message_body['Records'][0]['requestParameters']['sourceIPAddress']
 
             # Detect labels and text in the image
-            labels, detected_text = detect_text_and_labels(image_bucket, image_key)
-
+            detected_labels, detected_text = detect_text_and_labels(image_bucket, image_key)
+            
             # Initialize empty lists
-            labels = []
-            label_confidence = []
-            text = []
-            text_confidence = []
-
+            label_names = []
+            label_confidence_scores = []
+            text_values = []
+            text_confidence_scores = []
+            
             # Extract labels and their confidence scores
-            for label in labels:
-                labels.append(label['Name']['S'])
-                label_confidence.append(label['Confidence']['S'])
-
+            for label in detected_labels:
+                label_names.append(label['Name'])
+                label_confidence_scores.append(label['Confidence'])
+            
             # Extract text and its confidence scores
             for text_item in detected_text:
-                text.append(text_item['Text']['S'])
-                text_confidence.append(text_item['Confidence']['S'])
-
-            # Prepare item for DynamoDB with detected labels and text
+                text_values.append(text_item['Text'])
+                text_confidence_scores.append(text_item['Confidence'])
+            
+            # Store the lists in the DynamoDB item
             dynamo_item = {
                 'imageName': {'S': image_key},
                 'image_bucket': {'S': image_bucket},
                 'eventName': {'S': eventName},
                 'eventTime': {'S': eventTime},
                 'sourceIP': {'S': sourceIP},
-                'labels': {'L': [{'S': label} for label in labels]},
-                'label_confidence': {'L': [{'S': confidence} for confidence in label_confidence]},
-                'text': {'L': [{'S': t} for t in text]},
-                'text_confidence': {'L': [{'S': confidence} for confidence in text_confidence]}
+                'label_names': {'L': [{'S': label} for label in label_names]},
+                'label_confidence_scores': {'L': [{'S': score} for score in label_confidence_scores]},
+                'text_values': {'L': [{'S': text} for text in text_values]},
+                'text_confidence_scores': {'L': [{'S': score} for score in text_confidence_scores]}
             }
+
 
             # Put item into DynamoDB table
             dynamodb.put_item(TableName=table_name, Item=dynamo_item)
