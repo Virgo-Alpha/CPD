@@ -43,10 +43,10 @@
     },
   
     "Resources" : {
-      "entryTable" : {
+      "entryTableS2038770" : {
         "Type" : "AWS::DynamoDB::Table",
         "Properties" : {
-          "TableName": "entryTable",
+          "TableName": "entryTableS2038770",
           "AttributeDefinitions": [ { 
             "AttributeName" : {"Ref" : "HashKeyElementName"},
             "AttributeType" : {"Ref" : "HashKeyElementType"}
@@ -64,7 +64,7 @@
   
     "Outputs" : {
       "TableName" : {
-        "Value" : {"Ref" : "entryTable"},
+        "Value" : {"Ref" : "entryTableS2038770"},
         "Description" : "Table name of the newly created DynamoDB table"
       }
     }

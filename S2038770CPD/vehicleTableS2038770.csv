@@ -1,0 +1,4 @@
+"imageName","Blacklisted","label_names","text_values"
+"IMG_20240212_152041.jpg","false","[{""S"":""Vehicle""},{""S"":""Car""}]","[{""S"":""6585""},{""S"":""OC 11""},{""S"":""OC""},{""S"":""11""}]"
+"IMG_20240212_125129.jpg","true","[{""S"":""Vehicle""},{""S"":""Van""},{""S"":""Car""}]","[{""S"":""MASTERKEY""},{""S"":""SERVICES LTD""},{""S"":""10652 OC 22""},{""S"":""SERVICES""},{""S"":""LTD""}]"
+"IMG_20240212_151830.jpg","false","[{""S"":""Vehicle""},{""S"":""Car""}]","[{""S"":""8740 NV 12""},{""S"":""8740""},{""S"":""NV""},{""S"":""12""}]"
