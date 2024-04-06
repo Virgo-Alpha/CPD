@@ -62,6 +62,9 @@ def lambda_handler(event, context):
 
             # Detect labels and text in the image
             detected_labels, detected_text = detect_text_and_labels(image_bucket, image_key)
+
+            print(f'Detected labels: {detected_labels}')
+            print(f'Detected text: {detected_text}')
             
             # Initialize empty lists
             label_names = []
