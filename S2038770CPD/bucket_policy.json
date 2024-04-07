@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Id": "789325782",
+    "Statement": [
+        {
+            "Sid": "78623149",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "lambda.amazonaws.com"
+            },
+            "Action": [
+             "s3:GetObject"
+            ],
+            "Resource": "arn:aws:lambda:us-east-1:519012545046:function:my2ndLambdaS2038770",
+            "Condition": {
+              "StringEquals": {
+                "aws:SourceAccount": "519012545046"
+              },
+              "ArnLike": {
+                "aws:SourceArn": "arn:aws:s3:::mybucket-s2038770"
+              }
+        }
+        }
+    ]
+}
