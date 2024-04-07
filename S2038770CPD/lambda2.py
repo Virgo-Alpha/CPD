@@ -15,6 +15,13 @@ current_time = datetime.now()
 formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
 
 def send_email(subject, message, link=None, topic_arn=sns_topic_arn):
+    """
+    Send_email function to send an email via SNS
+    :param subject: Email subject
+    :param message: Email message
+    :param link: Optional link to include in the email
+    :param topic_arn: SNS topic ARN to send the email to
+    """
     try:
         email_message = message
         if link:
