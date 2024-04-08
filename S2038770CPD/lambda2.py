@@ -11,6 +11,9 @@ s3 = boto3.client('s3')
 vehicle_table_name = 'vehicleTableS2038770'
 sns_topic_arn = 'arn:aws:sns:us-east-1:519012545046:Vehicles-Notification'
 
+# GET request to the following link displays emergency contacts
+help_api = 'https://xgo132q6la.execute-api.us-east-1.amazonaws.com/default/callHelpS2038770'
+
 current_time = datetime.now()
 formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
 
@@ -27,7 +30,7 @@ def send_email(subject, message, link=None, topic_arn=sns_topic_arn):
         if link:
             # If link is provided, include the link in the email
             email_message += f'\n\nDownload the Image with the Vehicle here: {link}'
-
+        email_message += f'\n\nClick the following link to request assistance: {help_api}'
         response = sns.publish(
             TopicArn=topic_arn,
             Subject=subject,
