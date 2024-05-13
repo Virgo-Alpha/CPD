@@ -2,6 +2,8 @@
 
 To ensure a cost-effective and secure implementation of the application on AWS, the chosen approach focuses on leveraging a variety of AWS services tailored to specific requirements.
 
+![Screenshot from 2024-04-01 16-30-06](https://github.com/Virgo-Alpha/CPD/assets/79147634/20eb6702-6c0e-45a1-acf4-7e4abb4f91da)
+
 ## EC2 Instance
 Firstly, an Amazon EC2 instance is utilized to simulate the camera system responsible for image processing. The instance is selected and configured based on workload demands to optimize cost while ensuring efficient resource utilization. I plan to use it to store the images before uploading them to the s3.
 
